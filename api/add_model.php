@@ -16,6 +16,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 $posts->model_name = $data['model_name'];
 $posts->manufacturer_id = $data['manufacturer_id'];
+$posts->manufacturing_year = $data['manufacturing_year'];
 $posts->color = $data['color'];
 $posts->registration_no= $data['registration_no'];
 $posts->note = $data['note'];
@@ -26,6 +27,7 @@ $update_status = 'Y';
 
 if (empty(trim($posts->model_name)) ||
     empty(trim($posts->manufacturer_id)) ||
+    empty(trim($posts->manufacturing_year)) ||
     empty(trim($posts->color)) ||
     empty(trim($posts->registration_no)) ||
     empty(trim($posts->note)) ||
@@ -40,9 +42,9 @@ if ($update_status == 'N') {
 		array('message'=>'Fields can not be empty')
 	);
 }
-elseif (!is_numeric($posts->registration_no)) {
+elseif (!is_numeric($posts->registration_no) || !is_numeric($posts->manufacturing_year)) {
   echo json_encode(
-		array('message'=>'Registration Number is numeric field')
+		array('message'=>'Registration Number and Manufacturing Year are numeric fields')
 	);
 }
 elseif($posts->create()){

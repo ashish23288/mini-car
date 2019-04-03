@@ -115,6 +115,10 @@ a[data-toggle="collapse"] {
     padding: 1rem 2rem !important;
 }
 .row {
-    margin-right: 0px !important; 
-    margin-left: 0px !important; 
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+#inventoryDetails thead tr {
+    background-color: #84aae4;
+    color: #fff;
 }

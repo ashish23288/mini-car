@@ -19,4 +19,20 @@ export class DataService {
     );
   }
 
+  getInventoryItems () {
+      return this.http
+      .get('http://localhost:9090/mini-car/api/get_inventory_details.php')
+      .pipe(
+          map(res => res.json())
+      );
+  }
+
+  getManufacturerList () {
+      return this.http
+      .get('http://localhost:9090/mini-car/api/get_all_manufacturers.php')
+      .pipe(
+          map(res => res.json())
+      );
+  }
+
 }

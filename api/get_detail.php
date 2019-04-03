@@ -20,6 +20,7 @@ if($num > 0){
 	$post_item = array(
 		'model_id'=>$model_id,
 		'model_name'=>$model_name,
+		'manufacturing_year'=>$manufacturing_year,
 		'color'=>$color,
 		'registration_no'=>$registration_no,
 		'note'=>$note,
@@ -30,4 +31,3 @@ if($num > 0){
 } else {
 	echo json_encode(array('message'=>'No Detail found'));
 }
-

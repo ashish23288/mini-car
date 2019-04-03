@@ -14,4 +14,15 @@ export class ValidateService {
       return true;
     }
   }
+
+  validateModel(model) {
+    if(model.model_name == undefined || model.manufacturer_id == undefined || model.manufacturing_year == undefined || model.color == undefined ||
+       model.registration_no == undefined || model.note == undefined || model.pic1 == undefined || model.pic2 == undefined ||
+       model.model_name == '' || model.manufacturer_id == '' || model.manufacturing_year == '' || model.color == '' ||
+       model.registration_no == '' || model.note == '' || model.pic1 == '' || model.pic2 == ''){
+      return false;
+    } else {
+      return true;
+    }
+  }
 }

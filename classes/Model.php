@@ -5,6 +5,7 @@ class Model {
 
 	public  $model_name;
 	public  $manufacturer_id;
+	public  $manufacturer_id;
 	public  $color;
 	public  $registration_no;
 	public  $note;
@@ -21,6 +22,7 @@ class Model {
 			$query = 'INSERT INTO '.$this->table1.' SET
 			`model_name` = :model_name,
 			`manufacturer_id` = :manufacturer_id,
+			`manufacturing_year` = :manufacturing_year,
 			`color` = :color,
 			`registration_no` = :registration_no,
 			`note` = :note,
@@ -30,6 +32,7 @@ class Model {
 
 			$this->model_name 	   = htmlspecialchars(strip_tags($this->model_name));
 			$this->manufacturer_id = htmlspecialchars(strip_tags($this->manufacturer_id));
+			$this->manufacturing_year = htmlspecialchars(strip_tags($this->manufacturing_year));
 			$this->color 	   	   = htmlspecialchars(strip_tags($this->color));
 			$this->registration_no = htmlspecialchars(strip_tags($this->registration_no));
 			$this->note 	       = htmlspecialchars(strip_tags($this->note));
@@ -38,6 +41,7 @@ class Model {
 
 			$stmt->bindParam(':model_name',$this->model_name);
 			$stmt->bindParam(':manufacturer_id',$this->manufacturer_id);
+			$stmt->bindParam(':manufacturing_year',$this->manufacturing_year);
 			$stmt->bindParam(':color',$this->color);
 			$stmt->bindParam(':registration_no',$this->registration_no);
 			$stmt->bindParam(':note',$this->note);

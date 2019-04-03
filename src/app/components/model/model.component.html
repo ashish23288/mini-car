@@ -1,22 +1,20 @@
 <div class="jumbotron">
   <h1>Add Model</h1>
 </div>
-<form action="/action_page.php">
+<form #frm = "ngForm" (ngSubmit) = "onAddModelSubmit(frm)">
 	<div class="row">
 		<div class="col-sm-3">
 		  <div class="form-group">
 			<label for="ModelName">Model Name:</label>
-			<input type="text" class="form-control" id="ModelName">
+			<input type="text" class="form-control" id="ModelName" name="ModelName" ngModel>
 		  </div>
 		</div>
 		<div class="col-sm-3">
 			<div class="form-group">
 			  <label for="sel1">Select list:</label>
-			  <select class="form-control" id="sel1">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
+			  <select class="form-control" id="manufacturerId" name="manufacturerId" ngModel>
+          <option value="">Select Manufacturer</option>
+  				<option  *ngFor="let item of manufacturerList" value="{{item.m_id}}">{{item.manufacturer_name}}</option>
 			  </select>
 			</div>
 		</div>
@@ -24,25 +22,25 @@
 	<div class="col-sm-6">
 	  <div class="form-group">
 		<label for="color">Color:</label>
-		<input type="text" class="form-control" id="color">
+		<input type="text" class="form-control" id="color" name="color" ngModel>
 	  </div>
 	</div>
 	<div class="col-sm-6">
 	  <div class="form-group">
 		<label for="manufacturingYear">Manufacturing Year:</label>
-		<input type="number" class="form-control" id="manufacturingYear">
+		<input type="number" class="form-control" id="manufacturingYear" name="manufacturingYear" ngModel>
 	  </div>
 	</div>
 	<div class="col-sm-6">
 	  <div class="form-group">
 		<label for="registrationNumber">Registration Number:</label>
-		<input type="text" class="form-control" id="registrationNumber">
+		<input type="text" class="form-control" id="registrationNumber" name="registrationNumber" ngModel>
 	  </div>
 	</div>
 	<div class="col-sm-6">
 	  <div class="form-group">
 		<label for="modelNote">Note:</label>
-		 <textarea class="form-control" rows="3" id="modelNote"></textarea>
+		 <textarea class="form-control" rows="3" id="modelNote"  name="modelNote" ngModel></textarea>
 	  </div>
 	</div>
 	<button type="submit" class="btn btn-primary">Submit</button>
