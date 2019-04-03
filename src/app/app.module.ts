@@ -5,6 +5,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { ToastrModule } from 'ng6-toastr-notifications';
+import { DataTablesModule } from 'angular-datatables';
 
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -30,7 +31,8 @@ import { HomeComponent } from './components/home/home.component';
     ReactiveFormsModule,
 	  HttpModule,
     AppRoutingModule,
-	ToastrModule.forRoot()
+    DataTablesModule,
+	  ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

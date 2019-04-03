@@ -3,7 +3,7 @@
 </div>
 
 <div class="table-responsive">
-  <table class="table table-bordered table-hover" id="inventoryDetails">
+  <table class="table table-bordered table-hover" id="inventoryDetails"  datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
     <thead>
       <tr>
         <th>S.No</th>
@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of inventoryItemList;let ndx = index" class="">
+      <tr *ngFor="let item of inventoryItemList;let ndx = index" (click)="openModal(item.model_name)">
         <td>{{ndx+1}}</td>
         <td>{{item.manufacturer_name}}</td>
         <td>{{item.model_name}}</td>
@@ -22,3 +22,63 @@
     </tbody>
   </table>
 </div>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">{{selectedItem}}</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="card" *ngFor="let item of modelList">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-2">
+                  <img src="../uploads/{{item.pic1}}" class="img-thumbnail" alt="Cinque Terre">
+                </div>
+                <div class="col-sm-2">
+                  <img src="../uploads/{{item.pic2}}" class="img-thumbnail" alt="Cinque Terre">
+                </div>
+                <div class="col-sm-8">
+                  <table class="table table-bordered table-hover">
+                    <tbody>
+                      <tr>
+                        <th>manufacturing_year</th>
+                        <td>{{item.manufacturing_year}}</td>
+                      </tr>
+                      <tr>
+                        <th>color</th>
+                        <td>{{item.color}}</td>
+                      </tr>
+                      <tr>
+                        <th>registration_no</th>
+                        <td>{{item.registration_no}}</td>
+                      </tr>
+                      <tr>
+                        <th>note</th>
+                        <td>{{item.note}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <button type="button" name="button" class="btn btn-danger" (click)="getSold(item.model_id)">Sold</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <img ng-src="/opt/lampp/htdocs/mini-car/uploads/uploads/204555_video_thumbnail.png" class="img-rounded" alt="Cinque Terre">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>

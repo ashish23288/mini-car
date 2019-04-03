@@ -17,10 +17,10 @@ $posts->model_id = isset($_GET['model_id'])?$_GET['model_id']:die();
 
 if($posts->update()){
 	echo json_encode(
-		array('message'=>'Model Sold Successfully')
+		array('success'=>'Model Sold Successfully')
 	);
 } else {
 	echo json_encode(
-		array('message'=>'Model Not Sold')
+		array('error'=>'Model Not Sold')
 	);
 }

@@ -45,4 +45,20 @@ export class DataService {
       );
   }
 
+  getModelsDetail ( model_name ) {
+      return this.http
+      .get('http://localhost:9090/mini-car/api/get_detail.php?model_name='+model_name)
+      .pipe(
+          map(res => res.json())
+      );
+  }
+
+  soldModel (model_id) {
+    return this.http
+    .get('http://localhost:9090/mini-car/api/update.php?model_id='+model_id)
+    .pipe(
+        map(res => res.json())
+    );
+  }
+
 }

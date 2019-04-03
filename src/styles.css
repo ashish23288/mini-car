@@ -122,3 +122,6 @@ a[data-toggle="collapse"] {
     background-color: #84aae4;
     color: #fff;
 }
+.card{
+  margin-bottom: 20px;
+}
