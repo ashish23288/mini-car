@@ -1,0 +1,17 @@
+<nav id="sidebar">
+	<div class="sidebar-header">
+		<h3><a [routerLink] = "['/']">Mini Car Inventory</a></h3>
+	</div>
+	<ul class="list-unstyled components">
+		<li [routerLinkActive] = "['active']" [routerLinkActiveOptions] = "{exact:true}">
+			<a [routerLink] = "['/manufacturer']">Add Manufacturer</a>
+		</li>
+		<li [routerLinkActive] = "['active']" [routerLinkActiveOptions] = "{exact:true}">
+			<a [routerLink] = "['/model']">Add Model</a>
+		</li>
+		<li [routerLinkActive] = "['active']" [routerLinkActiveOptions] = "{exact:true}">
+			<a [routerLink] = "['/inventory']">View Inventory</a>
+		</li>
+	</ul>
+</nav>
+

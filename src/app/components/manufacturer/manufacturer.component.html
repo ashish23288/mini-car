@@ -1,0 +1,12 @@
+<div class="jumbotron">
+  <h1>Add Manufacturer</h1>
+</div>
+<form #frm = "ngForm" (ngSubmit) = "onAddManufacturerSubmit(frm)">
+	<div class="col-sm-6">
+	  <div class="form-group">
+		<label for="manufacturerName">Manufacturer Name:</label>
+		<input type="text" class="form-control" id="manufacturerName"  name="manufacturerName" ngModel>
+	  </div>
+	  <button type="submit" class="btn btn-primary">Submit</button>
+	</div>
+</form>
