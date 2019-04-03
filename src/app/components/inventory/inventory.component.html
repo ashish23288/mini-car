@@ -6,13 +6,15 @@
   <table class="table table-bordered table-hover" id="inventoryDetails">
     <thead>
       <tr>
+        <th>S.No</th>
         <th>Manufacturer Name</th>
         <th>Model Name</th>
         <th>Count</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of inventoryItemList" class="">
+      <tr *ngFor="let item of inventoryItemList;let ndx = index" class="">
+        <td>{{ndx+1}}</td>
         <td>{{item.manufacturer_name}}</td>
         <td>{{item.model_name}}</td>
         <td>{{item.count}}</td>

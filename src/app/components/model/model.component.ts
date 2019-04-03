@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrManager } from 'ng6-toastr-notifications';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup } from  '@angular/forms';
 import { Item } from '../../Item';
 import { ValidateService } from '../../services/validate.service';
 import { DataService } from '../../services/data.service';
@@ -11,9 +12,13 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./model.component.css']
 })
 export class ModelComponent implements OnInit {
+  form: FormGroup;
+  uploadResponse;
+
   manufacturerList: Item[] = [];
 
   constructor(
+    private formBuilder: FormBuilder,
     private validateService: ValidateService,
     private dataService: DataService,
     private toastr: ToastrManager,
@@ -28,6 +33,14 @@ export class ModelComponent implements OnInit {
     });
   }
 
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      // console.log(event.target.name);
+      const file = event.target.files[0];
+      this.form.get(event.target.name).setValue(file);
+    }
+  }
+
   onAddModelSubmit(form){
     const model = {
       model_name:form.value.ModelName,
@@ -35,31 +48,42 @@ export class ModelComponent implements OnInit {
       manufacturing_year:form.value.manufacturingYear,
       color:form.value.color,
       registration_no:form.value.registrationNumber,
-      note:form.value.modelNote,
-      pic1:form.value.picture1,
-      pic2:form.value.picture2
+      note:form.value.modelNote
     }
 
+    const formData = new FormData();
+
+    formData.append('model_name', model.model_name);
+    formData.append('manufacturer_id', model.manufacturer_id);
+    formData.append('manufacturing_year', model.manufacturing_year);
+    formData.append('color', model.color);
+    formData.append('registration_no', model.registration_no);
+    formData.append('note', model.note);
+    formData.append('picture1', this.form.get('picture1').value);
+    formData.append('picture2', this.form.get('picture2').value);
+    // console.log(model);
     if(!this.validateService.validateModel(model)){
       this.toastr.errorToastr('All Fields are Mandatory.');
       return false;
     }
 
-    // this.dataService.addManufacturer( manufacturer ).subscribe( result => {
-    //   console.log(result);
-    //   if(result.success == 1){
-    //     this.toastr.successToastr('Manufacturer added successfully.');
-    //     this.router.navigateByUrl('/model');
-    //   } else if(result.success == 2) {
-    //     this.toastr.errorToastr('Field can not be empty.');
-    //   } else {
-    //     this.toastr.errorToastr('Fails.');
-    //   }
-    // });
+    this.dataService.addModel( formData ).subscribe( result => {
+      console.log(result);
+      if(result.success){
+        this.toastr.successToastr(result.success);
+        this.router.navigateByUrl('/inventory');
+      } else {
+        this.toastr.errorToastr(result.error);
+      }
+    });
   }
 
   ngOnInit() {
     this.getManufacturerList();
+    this.form = this.formBuilder.group({
+      picture1: [''],
+      picture2: ['']
+    });
   }
 
 }

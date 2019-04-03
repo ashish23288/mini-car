@@ -5,7 +5,7 @@ class Model {
 
 	public  $model_name;
 	public  $manufacturer_id;
-	public  $manufacturer_id;
+	public  $manufacturing_year;
 	public  $color;
 	public  $registration_no;
 	public  $note;

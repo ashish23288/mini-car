@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { ToastrModule } from 'ng6-toastr-notifications';
@@ -27,6 +27,7 @@ import { HomeComponent } from './components/home/home.component';
     BrowserModule,
     BrowserAnimationsModule,
 	  FormsModule,
+    ReactiveFormsModule,
 	  HttpModule,
     AppRoutingModule,
 	ToastrModule.forRoot()

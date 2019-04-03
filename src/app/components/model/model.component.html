@@ -1,7 +1,7 @@
 <div class="jumbotron">
   <h1>Add Model</h1>
 </div>
-<form #frm = "ngForm" (ngSubmit) = "onAddModelSubmit(frm)">
+<form #frm = "ngForm" (ngSubmit) = "onAddModelSubmit(frm)" class="form-horizontal">
 	<div class="row">
 		<div class="col-sm-3">
 		  <div class="form-group">
@@ -28,13 +28,13 @@
 	<div class="col-sm-6">
 	  <div class="form-group">
 		<label for="manufacturingYear">Manufacturing Year:</label>
-		<input type="number" class="form-control" id="manufacturingYear" name="manufacturingYear" ngModel>
+		<input type="text" pattern="\d*" maxlength="4" class="form-control" id="manufacturingYear" name="manufacturingYear" ngModel>
 	  </div>
 	</div>
 	<div class="col-sm-6">
 	  <div class="form-group">
 		<label for="registrationNumber">Registration Number:</label>
-		<input type="text" class="form-control" id="registrationNumber" name="registrationNumber" ngModel>
+		<input type="text" pattern="\d*" maxlength="20" class="form-control" id="registrationNumber" name="registrationNumber" ngModel>
 	  </div>
 	</div>
 	<div class="col-sm-6">
@@ -43,5 +43,20 @@
 		 <textarea class="form-control" rows="3" id="modelNote"  name="modelNote" ngModel></textarea>
 	  </div>
 	</div>
+  <div class="col-sm-6">
+	  <div class="form-group">
+		<label for="modelNote">Picture1:</label>
+		 <input type="file" class="form-control" name="picture1" (change)="onFileSelect($event)" ngModel/>
+	  </div>
+	</div>
+  <div class="col-sm-6">
+	  <div class="form-group">
+		<label for="modelNote">Picture2:</label>
+		 <input type="file" class="form-control" name="picture2" (change)="onFileSelect($event)" ngModel/>
+	  </div>
+	</div>
+  <div class="col-sm-6">
 	<button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+  <br><br>
 </form>

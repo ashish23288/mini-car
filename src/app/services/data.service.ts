@@ -19,6 +19,16 @@ export class DataService {
     );
   }
 
+  addModel( modal ) {
+    let headers = new Headers();
+    headers.append('contentType','application/json');
+    return this.http
+    .post('http://localhost:9090/mini-car/api/add_model.php',modal,{headers:headers})
+    .pipe(
+        map(res => res.json())
+    );
+  }
+
   getInventoryItems () {
       return this.http
       .get('http://localhost:9090/mini-car/api/get_inventory_details.php')
