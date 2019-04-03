@@ -39,7 +39,7 @@ if (!is_numeric($posts->registration_no) || !is_numeric($posts->manufacturing_ye
   exit;
 }
 
-$target_dir = "../uploads/";
+$target_dir = "../src/assets/img/";
 
 for ($i=1; $i <= 2; $i++) {
 
