@@ -6,14 +6,14 @@ import { map, filter, scan } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DataService {
-
+  baseUrl = "http://localhost";
   constructor( private http:Http ) { }
 
   addManufacturer( manufacturer ) {
     let headers = new Headers();
     headers.append('contentType','application/json');
     return this.http
-    .post('http://localhost:9090/mini-car/api/add_manufacturer.php',manufacturer,{headers:headers})
+    .post(this.baseUrl+'mini-car/api/add_manufacturer.php',manufacturer,{headers:headers})
     .pipe(
         map(res => res.json())
     );
@@ -23,7 +23,7 @@ export class DataService {
     let headers = new Headers();
     headers.append('contentType','application/json');
     return this.http
-    .post('http://localhost:9090/mini-car/api/add_model.php',modal,{headers:headers})
+    .post(this.baseUrl+'mini-car/api/add_model.php',modal,{headers:headers})
     .pipe(
         map(res => res.json())
     );
@@ -31,7 +31,7 @@ export class DataService {
 
   getInventoryItems () {
       return this.http
-      .get('http://localhost:9090/mini-car/api/get_inventory_details.php')
+      .get(this.baseUrl+'mini-car/api/get_inventory_details.php')
       .pipe(
           map(res => res.json())
       );
@@ -39,7 +39,7 @@ export class DataService {
 
   getManufacturerList () {
       return this.http
-      .get('http://localhost:9090/mini-car/api/get_all_manufacturers.php')
+      .get(this.baseUrl+'mini-car/api/get_all_manufacturers.php')
       .pipe(
           map(res => res.json())
       );
@@ -47,7 +47,7 @@ export class DataService {
 
   getModelsDetail ( model_name ) {
       return this.http
-      .get('http://localhost:9090/mini-car/api/get_detail.php?model_name='+model_name)
+      .get(this.baseUrl+'mini-car/api/get_detail.php?model_name='+model_name)
       .pipe(
           map(res => res.json())
       );
@@ -55,7 +55,7 @@ export class DataService {
 
   soldModel (model_id) {
     return this.http
-    .get('http://localhost:9090/mini-car/api/update.php?model_id='+model_id)
+    .get(this.baseUrl+'mini-car/api/update.php?model_id='+model_id)
     .pipe(
         map(res => res.json())
     );
