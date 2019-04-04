@@ -3,7 +3,7 @@ import { ToastrManager } from 'ng6-toastr-notifications';
 import { Subject } from 'rxjs';
 import { Item } from '../../Item';
 import { DataService } from '../../services/data.service';
-
+declare var $: any 
 @Component({
   selector: 'app-inventory',
   templateUrl: './inventory.component.html',
