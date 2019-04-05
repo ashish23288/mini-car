@@ -32,14 +32,12 @@ export class ManufacturerComponent implements OnInit {
     }
 
     this.dataService.addManufacturer( manufacturer ).subscribe( result => {
-      console.log(result);
-      if(result.success == 1){
-        this.toastr.successToastr('Manufacturer added successfully.');
+      // console.log(result);
+      if(result.success){
+        this.toastr.successToastr(result.success);
         this.router.navigateByUrl('/model');
-      } else if(result.success == 2) {
-        this.toastr.errorToastr('Field can not be empty.');
       } else {
-        this.toastr.errorToastr('Fails.');
+        this.toastr.errorToastr(result.error);
       }
     });
   }

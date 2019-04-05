@@ -26,6 +26,17 @@ class Manufacturer {
 		}
 
 	}
+	public function checkManufacturerExist(){
+		try{
+			$query = 'SELECT * FROM '.$this->table1.' WHERE `manufacturer_name` = :manufacturer_name';
+			$stmt  = $this->conn->prepare($query);
+			$stmt->bindParam(':manufacturer_name',$this->name);
+			$stmt->execute();
+			return $stmt;
+		} catch ( PDOException $e) {
+			echo die('Query Error: '.$e->getMessage());
+		}
+	}
 
 	public function getAllManufacturer(){
 		try{

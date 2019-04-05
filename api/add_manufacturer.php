@@ -15,17 +15,26 @@ $posts = new Manufacturer($db);
 $data = json_decode(file_get_contents('php://input'), true);
 
 $posts->name = $data['manufacturer_name'];
-if (empty($posts->name) or trim($posts->name)=='') {
+
+$result= $posts->checkManufacturerExist();
+$num   = $result->rowCount();
+
+if($num > 0){
 	echo json_encode(
-		array('success'=>2)
+		array('error'=>'Manufacturer Name already exist.')
+	);
+}
+elseif (empty($posts->name) or trim($posts->name)=='') {
+	echo json_encode(
+		array('error'=>'Field can not be empty')
 	);
 }
 elseif($posts->create()){
 	echo json_encode(
-		array('success'=>1)
+		array('success'=>'Manufacturer added successfully.')
 	);
 } else {
 	echo json_encode(
-		array('success'=>0)
+		array('error'=>'Fails')
 	);
 }

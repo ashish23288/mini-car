@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { ToastrModule } from 'ng6-toastr-notifications';
 import { DataTablesModule } from 'angular-datatables';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -32,6 +33,7 @@ import { HomeComponent } from './components/home/home.component';
 	  HttpModule,
     AppRoutingModule,
     DataTablesModule,
+    NgxDropzoneModule,
 	  ToastrModule.forRoot()
   ],
   providers: [],
