@@ -26,5 +26,5 @@ if($num > 0){
 	}
 	echo json_encode($posts_arr);
 } else {
-	echo json_encode(array('message'=>'No posts found'));
+	echo json_encode(array('message'=>'No models found'));
 }

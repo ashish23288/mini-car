@@ -39,6 +39,16 @@ if (!is_numeric($posts->registration_no) || !is_numeric($posts->manufacturing_ye
   exit;
 }
 
+$result= $posts->checkRegistrationNoExist();
+$num   = $result->rowCount();
+
+if($num > 0){
+	echo json_encode(
+		array('error'=>'Registration No already exist.')
+	);
+  exit;
+}
+
 $target_dir = "../src/assets/img/";
 
 for ($i=1; $i <= 2; $i++) {

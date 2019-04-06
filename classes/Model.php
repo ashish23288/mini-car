@@ -56,4 +56,16 @@ class Model {
 
 	}
 
+	public function checkRegistrationNoExist(){
+		try{
+			$query = 'SELECT * FROM '.$this->table1.' WHERE `registration_no` = :registration_no';
+			$stmt  = $this->conn->prepare($query);
+			$stmt->bindParam(':registration_no',$this->registration_no);
+			$stmt->execute();
+			return $stmt;
+		} catch ( PDOException $e) {
+			echo die('Query Error: '.$e->getMessage());
+		}
+	}
+
 }

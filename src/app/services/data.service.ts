@@ -6,7 +6,7 @@ import { map, filter, scan } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DataService {
-  baseUrl = "http://localhost/";
+  baseUrl = "http://localhost:9090/";
   constructor( private http:Http ) { }
 
   addManufacturer( manufacturer ) {
